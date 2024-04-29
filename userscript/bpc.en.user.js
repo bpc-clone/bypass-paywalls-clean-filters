@@ -1464,15 +1464,14 @@ else if (matchDomain('enotes.com')) {
   let paywall = document.querySelectorAll('section.c-cta-section');
   if (paywall.length) {
     removeDOMElement(...paywall);
-    let blurred = document.querySelectorAll('div[class^="_"]');
+    let blurred = document.querySelectorAll('div[class="u-paywall"]');
     for (let elem of blurred)
       elem.removeAttribute('class');
-    let intro = document.querySelectorAll('div.o-rte-text > p:not([class]), div.o-rte-text > h3');
+    let intro = document.querySelectorAll('div.o-rte-text > div:not([class])');
     for (let elem of intro)
       removeDOMElement(elem);
-    let section_words = pageContains('p[class="u-align--center"]', /\(The entire section contains/);
-    let ads = document.querySelectorAll('.ad-hfu');
-    hideDOMElement(...section_words, ...ads);
+    let section_words = document.querySelectorAll('p.u-align--center');
+    hideDOMElement(...section_words);
   }
 }
 
